@@ -1,0 +1,181 @@
+﻿<h2>Cadastrar nova Entidade Social</h2>
+<hr/>
+
+<form>
+    <div class="form-group">
+        <label for="name">Razão Social</label>
+        <input type="text" class="form-control" id="name" placeholder="Razão Social">
+    </div>
+    <div class="form-group">
+        <label for="fantasia">Nome Fantasia</label>
+        <input type="text" class="form-control" id="fatasia" placeholder="Nome Fantasia">
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="cnpj">CNPJ</label>
+                <input type="text" class="form-control" id="cnpj" placeholder="cnpj">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="ie">Inscrição Estadual</label>
+                <input type="text" class="form-control" id="ie" placeholder="Inscrição Estadual">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="fundacao">Ano de Fundação</label>
+                <input type="text" class="form-control" id="fundacao" placeholder="Ano de Fundação">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <label for="endereco">Endereço</label>
+                <input type="text" class="form-control" id="endereco" placeholder="Endereço">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="numero">Número</label>
+                <input type="text" class="form-control" id="numero" placeholder="Número">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="bairro">Bairro</label>
+                <input type="text" class="form-control" id="bairro" placeholder="Bairro">
+            </div>
+
+            <div class="form-group">
+                <label for="cidade">Cidade</label>
+                <input type="text" class="form-control" id="cidade" placeholder="Cidade">
+            </div>
+
+            <div class="form-group">
+                <label for="estado">Estado</label>
+                <select class="form-control" id="estado">
+                    <option value="">Selecione</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espirito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="cep">Cep</label>
+                <input type="text" class="form-control" id="cep" placeholder="Cep">
+            </div>
+
+            <div class="form-group">
+                <label for="pais">País</label>
+                <select class="form-control" id="pais">
+                    <option value="">Selecione</option>
+                    <option value="BR">Brasil</option>
+                    <option value="PT">Portugal</option>
+                    <option value="US">Estados Unidos</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="compl">Complemento</label>
+                <input type="text" class="form-control" id="compl" placeholder="Complemento">
+            </div>            
+        </div>
+        <div class="col-md-8">
+            <div id="map" style="height:345px;"></div>
+            <br/>
+            <div class="form-group">
+                <p><b>Localização</b> (Selecionar no Mapa)</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="lat" disabled="disabled">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="lng" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript"> 
+                var map;
+                var marker = null;
+                (function () {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: { lat: -22.9108558, lng: -43.5884197 },
+                        scrollwheel: true,
+                        zoom: 5,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        streetViewControl: false,
+                        mapTypeControl: false,
+                        disableDoubleClickZoom: true
+                    });
+
+                    google.maps.event.addListener(map, 'click', function (event) {
+                        placeMarker(event.latLng);
+                    });
+                    
+                })();
+
+                function placeMarker(location) {
+                    
+                    if (marker === null) {
+                        marker = new google.maps.Marker({
+                            position: location,
+                            map: map,
+                            animation: google.maps.Animation.DROP,
+                            draggable: true,
+                        });
+                        google.maps.event.addListener(marker, 'dragend', function () {
+                            updateLocation(this.position);
+                        });
+                        updateLocation(location);
+                    }
+                }
+                function updateLocation(location) {
+                    $("#lat").val(location.lat);
+                    $("#lng").val(location.lng);
+                }
+            </script>
+            
+
+        </div>       
+    </div>
+    <div class="form-group">
+        <label for="logo">Logotipo</label>
+        <input type="file" id="logo">
+    </div>
+</form>
+<hr/>
+
+<a class="btn btn-success">Cadastrar</a>
+<a class="btn btn-danger">Cancelar</a>

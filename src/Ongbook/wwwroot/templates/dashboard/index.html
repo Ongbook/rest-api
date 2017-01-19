@@ -1,0 +1,116 @@
+﻿<div ng-controller="homeCtrl">
+    <header>
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" data-menuanchor="mapa" href="#mapa">
+                    <img src="../../assets/img/logo.png" alt="logo ongbook" />
+                </a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li data-menuanchor="queremos"><a href="#queremos">Atua em alguma ONG?</a></li>
+                    <li data-menuanchor="parceiros"><a href="#parceiros">Parceiros?</a></li>
+                    <li><a href="#">O que é</a></li>
+                    <li data-menuanchor="parceiros"><a href="#parceiros">Apoie</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                            <div *ngIf="authState">
+                                <span>Olá </span>
+                                <strong>Usuário</strong>
+                                <span class="caret"></span>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu" *ngIf="authState">
+                            <li>
+                                <div class="navbar-login">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <p class="text-center">
+                                                <img src="{{ authState.auth.photoURL}}" alt="img" />
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <p class="text-left"><strong>{{ authState.auth.displayName}}</strong></p>
+                                            <p class="text-left small">{{ authState.auth.email}}</p>
+                                            <p class="text-left">
+                                                <a href="#" class="btn btn-primary btn-block btn-sm">Minha Conta</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider navbar-login-session-bg"></li>
+                            <li><a ng-click="vm.listDashboard()">Painel <span class="fa fa-dashboard pull-right"></span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Entidades <span class="fa fa-home pull-right"></span></a></li>
+                            <li class="divider"></li>
+                            <li><a (click)="logout()">Sair <span class="fa fa-sign-out pull-right"></span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+</header>
+<div class="container-fluid content">
+    <div class="row-fluid">
+        <div class="col-md-2">
+            <div class="sidebar rounded">
+                <a >
+                    <div class="sidebarBtn" ng-click="vm.listDashboard()">
+                        <i class="fa fa-home"></i>
+                        <p >Painel</p>
+                    </div>
+                </a>
+                <hr />
+                <a href="javascript:loadPage('entidades.html')">
+                    <div class="sidebarBtn">
+                        <i class="fa fa-university"></i>
+                        <p>Entidades</p>
+                    </div>
+                </a>
+                <hr />
+                <a href="/Admin/Categorias">
+                    <div class="sidebarBtn">
+                        <i class="fa fa-heart"></i>
+                        <p>Necessidades</p>
+                    </div>
+                </a>
+                <hr />
+                <a href="/Admin/Relatorios">
+                    <div class="sidebarBtn">
+                        <i class="fa fa-map-marker"></i>
+                        <p>Contribua</p>
+                    </div>
+                </a>
+                <hr />
+                <a href="/Admin/Config">
+                    <div class="sidebarBtn">
+                        <i class="fa fa-cog"></i>
+                        <p>Configurações</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-12">
+                    <div ui-vigooew class="rounded page-content" id="content" style="padding:20px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
