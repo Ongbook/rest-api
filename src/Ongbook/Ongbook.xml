@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ongbook</name>
+    </assembly>
+    <members>
+        <member name="T:Ongbook.Controllers.Api.v1.EntidadesController">
+            <summary>
+            Define métodos de requisição e manipulação de dados
+            referentes às entidades cadastradas no ongbook.org
+            </summary>
+        </member>
+        <member name="M:Ongbook.Controllers.Api.v1.EntidadesController.GetAsync(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Obtém uma lista de entidades cadastradas no ongbook.org
+            </summary>
+            <param name="cnpj">CNPJ da entidade a ser pesquisada</param>
+            <param name="razaosocial">Razão social da entidade a ser pesquisada</param>
+            <param name="cidade">Cidade de atuação da entidade</param>
+            <param name="cep">Cep referente à localização da entidade</param>
+            <param name="estado">Estado (UF) da entidade</param>
+            <returns>JSON</returns>
+        </member>
+        <member name="M:Ongbook.Controllers.Api.v1.EntidadesController.GetAsync(System.String)">
+            <summary>
+            Obtém os dados de uma entidade específica
+            </summary>
+            <param name="id">Id da entidade cadastrada no ongbook.org</param>
+            <returns>JSON</returns>
+        </member>
+        <member name="M:Ongbook.Controllers.Api.v1.EntidadesController.PostAsync(Ongbook.Model.Entidade)">
+            <summary>
+            Insere uma nova entidade no ongbook.org
+            </summary>
+            <param name="model"></param>
+            <returns>JSON</returns>
+        </member>
+        <member name="M:Ongbook.Controllers.Api.v1.EntidadesController.PutAsync(System.String,Ongbook.Model.Entidade)">
+            <summary>
+            Atualiza os dados de uma entidade cadastrada
+            </summary>
+            <param name="id">Id da entidade</param>
+            <param name="model"></param>
+            <returns>JSON</returns>
+        </member>
+        <member name="T:Ongbook.Controllers.AppController">
+            <summary>
+            Define o ponto de entrada da aplicação
+            </summary>
+        </member>
+        <member name="M:Ongbook.Controllers.AppController.Index">
+            <summary>
+            Define o método padrão GET
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Ongbook.Firebase">
+            <summary>
+            Define configurações locais do cliente do Firebase
+            </summary>
+        </member>
+        <member name="P:Ongbook.Firebase.Client">
+            <summary>
+            Obtém um objeto de acesso à api do firebase
+            </summary>
+        </member>
+        <member name="M:Ongbook.Firebase.Configure">
+            <summary>
+            Método chamado em tempo de execução para a configuração da api do firebase
+            </summary>
+        </member>
+        <member name="T:Ongbook.Model.Entidade">
+            <summary>
+            Representa uma entidade social do Ongbook.org
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Entidade.razao_social">
+            <summary>
+            Razão social da entidade (Obrigatório)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Entidade.fantasia">
+            <summary>
+            Nome fantasia da entidade (Obrigatório)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Entidade.cnpj">
+            <summary>
+            CNPJ da entidade (Obrigatório)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Entidade.ie">
+            <summary>
+            Inscrição Estadual da entidade (Opcional)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Entidade.ano_fundacao">
+            <summary>
+            Ano de fundação da entidade (Obrigatório)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Entidade.localizacao">
+            <summary>
+            Informações de localização da entidade (Filhos obrigatórios)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Entidade.route">
+            <summary>
+            Caminho de rota personalizado da entidade (Obrigatório)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Entidade.id_responsavel">
+            <summary>
+            Id de cadastro do responsável pela entidade (Obrigatório)
+            </summary>
+        </member>
+        <member name="T:Ongbook.Model.Logradouro">
+            <summary>
+            Define informações sobre a localização física de uma entidade
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Logradouro.endereco">
+            <summary>
+            Endereço da entidade (Rua, avenida, etc.) (Obrigatório)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Logradouro.numero">
+            <summary>
+            Número do endereço da entidade (obrigatório)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Logradouro.bairro">
+            <summary>
+            Bairro da entidade (Obrigatório)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Logradouro.cidade">
+            <summary>
+            Cidade da entidade (Obrigatório)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Logradouro.estado">
+            <summary>
+            Estado da entidade (Obrigatório)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Logradouro.cep">
+            <summary>
+            Cep da entidade (Obrigatório)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Logradouro.pais">
+            <summary>
+            País de origem da entidade (Obrigatório)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Logradouro.complemento">
+            <summary>
+            Complemento do endereço da entidade (Opcional)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Logradouro.latitude">
+            <summary>
+            Coodenada geográfica de Latidude da entidade (Obrigatório)
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.Logradouro.longitude">
+            <summary>
+            Coodenada geográfica de Langitude da entidade (Obrigatório)
+            </summary>
+        </member>
+        <member name="T:Ongbook.Model.EntidadeResponse">
+            <summary>
+            Define uma resposta de entidade na api
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.EntidadeResponse.id">
+            <summary>
+            Id da entidade 
+            </summary>
+        </member>
+        <member name="T:Ongbook.Model.IFirebaseEntry">
+            <summary>
+            Define uma entrada do firebase database
+            </summary>
+        </member>
+        <member name="P:Ongbook.Model.IFirebaseEntry.id">
+            <summary>
+            Obtém ou define o id da entrada do banco de dados
+            </summary>
+        </member>
+        <member name="T:Ongbook.Program">
+            <summary>
+            Define a classe de entrada da aplicação
+            </summary>
+        </member>
+        <member name="M:Ongbook.Program.Main(System.String[])">
+            <summary>
+            Define o método de entrada da aplicação
+            </summary>
+            <param name="args">Parâmetros de inicialização</param>
+        </member>
+        <member name="T:Ongbook.Startup">
+            <summary>
+            Define a classe de inicialização da api
+            </summary>
+        </member>
+        <member name="M:Ongbook.Startup.#ctor(Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Construtor da classe Startup
+            </summary>
+            <param name="env"></param>
+        </member>
+        <member name="P:Ongbook.Startup.Configuration">
+            <summary>
+            Obtém as configurações do projeto
+            </summary>
+        </member>
+        <member name="M:Ongbook.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Método chamado em tempo de execução para adicionar serviços ao conteiner
+            </summary>
+            <param name="services">Coleção de serviços</param>
+        </member>
+        <member name="M:Ongbook.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Método chamado em tempo de execução para a configuração do pipeline de requisições
+            </summary>
+        </member>
+        <member name="T:Ongbook.Util.FirebaseConverter">
+            <summary>
+            Define métodos de conversão da resposta da api do firebase
+            </summary>
+        </member>
+        <member name="M:Ongbook.Util.FirebaseConverter.ConvertCollectionId``1(System.String)">
+            <summary>
+            Move o Id do Firebase para dentro do objeto
+            </summary>
+            <typeparam name="T">typeof(IFirebaseEntry)</typeparam>
+            <param name="json">String json de entrada</param>
+            <returns>Lista de objetos convertidos</returns>
+        </member>
+        <member name="M:Ongbook.Util.FirebaseConverter.ConvertId``1(System.String)">
+            <summary>
+            Move o Id do Firebase para dentro do objeto
+            </summary>
+            <typeparam name="T">typeof(IFirebaseEntry)</typeparam>
+            <param name="json">String json de entrada</param>
+            <returns>Objeto convertido</returns>
+        </member>
+        <member name="M:Ongbook.Util.FirebaseConverter.Convert``1(System.String)">
+            <summary>
+            Move o Id do Firebase para dentro do objeto
+            </summary>
+            <typeparam name="T">typeof(IFirebaseEntry)</typeparam>
+            <param name="json">String json de entrada</param>
+            <returns>Objeto convertido</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,17 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "3.3.6",
+    "jquery": "2.2.0",
+    "jquery-validation": "1.14.0",
+    "jquery-validation-unobtrusive": "3.2.6",
+    "angular": "v1.6.1",
+    "angular-route": "v1.6.1",
+    "angular-animate": "v1.6.1",
+    "angular-ui-router": "0.3.2",
+    "ng-file-upload": "12.2.13",
+    "AngularJS-Toaster": "2.1.0",
+    "angular-bootstrap": "2.3.2"
+  }
+}
